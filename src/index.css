@@ -586,6 +586,26 @@ em {
   justify-self: start;
 }
 
+.form button:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+.form__feedback {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form__feedback--ok {
+  color: var(--accent);
+}
+
+.form__feedback--error {
+  color: #ff8a8a;
+}
+
 /* ---------- Footer ---------- */
 .footer {
   border-top: 1px solid var(--border);

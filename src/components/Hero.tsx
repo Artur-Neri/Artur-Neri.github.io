@@ -3,7 +3,7 @@ import { site, whatsappLink } from '../site'
 const stats = [
   { value: '100%', label: 'Projetos sob medida' },
   { value: '-80%', label: 'Tempo em tarefas manuais' },
-  { value: '24h', label: 'Robôs rodando por dia' },
+  { value: '24h/dia', label: 'Robôs rodando sozinhos' },
 ]
 
 export default function Hero() {

@@ -1,18 +1,46 @@
 import { useState, type FormEvent } from 'react'
 import { site, whatsappLink } from '../site'
 
+type Status = 'idle' | 'sending' | 'success' | 'error'
+
 export default function Contact() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
+  const [status, setStatus] = useState<Status>('idle')
 
-  const handleSubmit = (e: FormEvent) => {
+  const endpoint = site.formspreeId
+    ? `https://formspree.io/f/${site.formspreeId}`
+    : ''
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    const subject = `Novo projeto — ${name || 'contato pelo site'}`
-    const body = `Nome: ${name}\nE-mail: ${email}\n\n${message}`
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`
+
+    // Sem formulário configurado: mantém o fallback por e-mail.
+    if (!endpoint) {
+      const subject = `Novo projeto — ${name || 'contato pelo site'}`
+      const body = `Nome: ${name}\nE-mail: ${email}\n\n${message}`
+      window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
+        subject,
+      )}&body=${encodeURIComponent(body)}`
+      return
+    }
+
+    setStatus('sending')
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      })
+      if (!res.ok) throw new Error('request failed')
+      setStatus('success')
+      setName('')
+      setEmail('')
+      setMessage('')
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -72,9 +100,24 @@ export default function Contact() {
               required
             />
           </label>
-          <button className="btn btn--primary btn--lg" type="submit">
-            Enviar mensagem
+          <button
+            className="btn btn--primary btn--lg"
+            type="submit"
+            disabled={status === 'sending'}
+          >
+            {status === 'sending' ? 'Enviando...' : 'Enviar mensagem'}
           </button>
+
+          {status === 'success' && (
+            <p className="form__feedback form__feedback--ok" role="status">
+              Mensagem enviada! Retorno em breve.
+            </p>
+          )}
+          {status === 'error' && (
+            <p className="form__feedback form__feedback--error" role="alert">
+              Algo deu errado. Tente novamente ou chame no WhatsApp.
+            </p>
+          )}
         </form>
       </div>
     </section>

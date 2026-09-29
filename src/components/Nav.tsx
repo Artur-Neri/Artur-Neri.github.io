@@ -38,7 +38,7 @@ export default function Nav() {
           ))}
           <a
             className="btn btn--primary nav__cta"
-            href={whatsappLink('Olá, Artur! Quero um orçamento.')}
+            href={whatsappLink('Olá, Artur! Quero conversar sobre um projeto.')}
             target="_blank"
             rel="noreferrer"
           >

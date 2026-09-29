@@ -4,7 +4,7 @@ export const site = {
   tagline: 'Websites e automações que trabalham por você',
   email: 'contato@arturneri.me',
   // Troque pelo seu número no formato internacional, só dígitos: 55 + DDD + número
-  whatsapp: '5500000000000',
+  whatsapp: '5518996194624',
   github: 'https://github.com/Artur-Neri',
   linkedin: '',
   location: 'Brasil · Atendo remotamente',

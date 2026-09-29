@@ -1,48 +1,58 @@
 const projects = [
   {
-    tag: 'Automação · Jurídico',
-    title: 'Robô de documentos e tribunais',
-    text: 'Sistema que monitora processos, baixa documentos de forma automática e organiza tudo por cliente, substituindo horas de trabalho manual por dia.',
-    tags: ['Node.js', 'Scraping', 'Docker'],
-  },
-  {
-    tag: 'Web · Dashboard',
-    title: 'Painel de monitoramento',
-    text: 'Interface web para acompanhar robôs e status de execuções em tempo real, com logs, alertas e histórico de resultados.',
-    tags: ['React', 'API', 'Real-time'],
-  },
-  {
-    tag: 'Integração · Dados',
-    title: 'Coleta e sincronização',
-    text: 'Integração entre sistemas que não conversam entre si, centralizando dados e eliminando planilhas controladas à mão.',
-    tags: ['ETL', 'APIs', 'Notificações'],
+    tag: 'Automação · Azure DevOps',
+    title: 'Emails de release sem copia e cola',
+    problem:
+      'O QA da empresa passava horas montando o e-mail de release à mão, copiando e colando informação das tasks de desenvolvimento no Azure DevOps.',
+    solution:
+      'Criei um serviço em que ele vincula a conta, seleciona as tasks que saíram na nova versão e, com um clique, o e-mail está montado. Com autocomplete, depois do primeiro preenchimento o uso fica ainda mais rápido.',
+    result: 'Cerca de 80% menos tempo para enviar os e-mails de liberação.',
+    tags: ['Node.js', 'Azure DevOps API', 'Integração'],
   },
 ]
 
 export default function Projects() {
+  const [project] = projects
+
   return (
     <section className="section" id="projetos">
       <div className="container">
         <header className="section__head">
           <span className="eyebrow">Projetos</span>
-          <h2>Alguns exemplos do que já construí</h2>
-          <p>Projetos reais, feitos para resolver problemas concretos de quem trabalha com informação e processos.</p>
+          <h2>Um caso real</h2>
+          <p>
+            Não é mockup: é um problema de trabalho que existia todos os dias e
+            deixou de existir.
+          </p>
         </header>
 
-        <div className="grid grid--3">
-          {projects.map((p) => (
-            <article className="project" key={p.title}>
-              <span className="project__tag">{p.tag}</span>
-              <h3>{p.title}</h3>
-              <p>{p.text}</p>
-              <div className="project__tags">
-                {p.tags.map((t) => (
-                  <span key={t}>{t}</span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
+        <article className="case">
+          <div className="case__head">
+            <span className="project__tag">{project.tag}</span>
+            <h3>{project.title}</h3>
+          </div>
+
+          <div className="case__body">
+            <div className="case__col">
+              <span className="case__label">O problema</span>
+              <p>{project.problem}</p>
+            </div>
+            <div className="case__col">
+              <span className="case__label">O que construí</span>
+              <p>{project.solution}</p>
+            </div>
+            <div className="case__col">
+              <span className="case__label">Resultado</span>
+              <p className="case__result">{project.result}</p>
+            </div>
+          </div>
+
+          <div className="project__tags">
+            {project.tags.map((t) => (
+              <span key={t}>{t}</span>
+            ))}
+          </div>
+        </article>
       </div>
     </section>
   )

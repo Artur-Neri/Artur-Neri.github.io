@@ -20,9 +20,9 @@ export default function Hero() {
         </h1>
 
         <p className="hero__lead">
-          Desenvolvimento web, scraping e integrações sob medida. Eu transformo
-          tarefas repetitivas e sistemas espalhados em fluxos automáticos que
-          economizam horas todos os dias.
+          Desenvolvimento web, automação e scraping sob medida. Já transformei
+          um processo de horas montando e-mails de release à mão em um clique —
+          e faço o mesmo com as tarefas repetitivas que consomem o seu dia.
         </p>
 
         <div className="hero__actions">

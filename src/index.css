@@ -506,6 +506,56 @@ em {
   color: var(--muted);
 }
 
+/* caso real */
+.case {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px;
+}
+
+@media (max-width: 720px) {
+  .case {
+    padding: 24px;
+  }
+}
+
+.case__head h3 {
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  font-weight: 800;
+}
+
+.case__body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin: 30px 0 4px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.case__label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.case__col p {
+  font-size: 0.95rem;
+  color: var(--text);
+  opacity: 0.92;
+}
+
+.case__result {
+  font-weight: 700;
+  color: var(--accent) !important;
+  opacity: 1 !important;
+}
+
 /* ---------- Contact ---------- */
 .contact {
   display: grid;
@@ -645,6 +695,11 @@ em {
   .contact {
     grid-template-columns: 1fr;
     gap: 36px;
+  }
+
+  .case__body {
+    grid-template-columns: 1fr;
+    gap: 22px;
   }
 }
 

@@ -308,9 +308,15 @@ em {
 
 .tech__track {
   display: flex;
-  gap: 40px;
   width: max-content;
-  animation: scroll 32s linear infinite;
+  animation: scroll 28s linear infinite;
+  will-change: transform;
+}
+
+.tech__group {
+  display: flex;
+  gap: 40px;
+  padding-right: 40px;
 }
 
 .tech__track span {
@@ -322,6 +328,9 @@ em {
 }
 
 @keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
   to {
     transform: translateX(-50%);
   }

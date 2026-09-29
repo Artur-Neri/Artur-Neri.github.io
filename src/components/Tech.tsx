@@ -11,13 +11,22 @@ const stack = [
   'Automação',
 ]
 
+function Group() {
+  return (
+    <div className="tech__group" aria-hidden="true">
+      {stack.map((t) => (
+        <span key={t}>{t}</span>
+      ))}
+    </div>
+  )
+}
+
 export default function Tech() {
   return (
     <div className="tech" aria-label="Tecnologias">
       <div className="tech__track">
-        {[...stack, ...stack].map((t, i) => (
-          <span key={`${t}-${i}`}>{t}</span>
-        ))}
+        <Group />
+        <Group />
       </div>
     </div>
   )

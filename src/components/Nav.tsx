@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react'
 import { site, whatsappLink } from '../site'
-
-const links = [
-  { href: '#servicos', label: 'Serviços' },
-  { href: '#processo', label: 'Processo' },
-  { href: '#projetos', label: 'Projetos' },
-  { href: '#contato', label: 'Contato' },
-]
+import { useI18n } from '../i18n'
+import LanguageSwitcher from './LanguageSwitcher'
 
 export default function Nav() {
+  const { t } = useI18n()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+
+  const links = [
+    { href: '#servicos', label: t.nav.services },
+    { href: '#processo', label: t.nav.process },
+    { href: '#projetos', label: t.nav.projects },
+    { href: '#contato', label: t.nav.contact },
+  ]
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -30,32 +33,37 @@ export default function Nav() {
           </span>
         </a>
 
-        <nav className={`nav__links ${open ? 'is-open' : ''}`}>
-          {links.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
-              {l.label}
+        <div className="nav__right">
+          <nav className={`nav__links ${open ? 'is-open' : ''}`}>
+            {links.map((l) => (
+              <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
+                {l.label}
+              </a>
+            ))}
+            <a
+              className="btn btn--primary nav__cta"
+              href={whatsappLink(t.nav.whatsapp)}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t.nav.cta}
             </a>
-          ))}
-          <a
-            className="btn btn--primary nav__cta"
-            href={whatsappLink('Olá, Artur! Quero conversar sobre um projeto.')}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Falar agora
-          </a>
-        </nav>
+          </nav>
 
-        <button
-          className="nav__toggle"
-          aria-label="Abrir menu"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
+          <div className="nav__end">
+            <LanguageSwitcher />
+            <button
+              className="nav__toggle"
+              aria-label={t.nav.menu}
+              aria-expanded={open}
+              onClick={() => setOpen((v) => !v)}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
+        </div>
       </div>
     </header>
   )

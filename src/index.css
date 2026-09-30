@@ -152,6 +152,19 @@ em {
   font-size: 0.85rem;
 }
 
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.nav__end {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .nav__links {
   display: flex;
   align-items: center;
@@ -193,6 +206,79 @@ em {
   height: 2px;
   background: var(--text);
   border-radius: 2px;
+}
+
+/* ---------- Language switcher ---------- */
+.lang {
+  position: relative;
+}
+
+.lang__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.lang__btn:hover {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.lang__btn svg {
+  color: var(--muted);
+}
+
+.lang__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 60;
+  min-width: 170px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 24px 48px -22px rgba(0, 0, 0, 0.85);
+}
+
+.lang__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lang__item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.lang__item.is-active {
+  color: var(--accent);
+  font-weight: 700;
 }
 
 /* ---------- Hero ---------- */

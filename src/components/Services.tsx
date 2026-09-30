@@ -1,35 +1,16 @@
-const services = [
-  {
-    icon: '</>',
-    title: 'Desenvolvimento Web',
-    text: 'Sites, landing pages e painéis rápidos e responsivos. Do design ao deploy, com foco em conversão e performance.',
-    items: ['Sites e landing pages', 'Dashboards e painéis', 'APIs e backends'],
-  },
-  {
-    icon: '⚙',
-    title: 'Automação & Scraping',
-    text: 'Robôs que coletam, monitoram e processam dados por você — sem trabalho manual repetitivo.',
-    items: ['Coleta e monitoramento de dados', 'Integração entre sistemas', 'Relatórios automáticos'],
-  },
-  {
-    icon: '⇄',
-    title: 'Integrações & APIs',
-    text: 'Conecto ferramentas que não conversam entre si, elimino planilhas manuais e centralizo a informação.',
-    items: ['Webhooks e integrações', 'Sincronização de dados', 'Bots de notificação'],
-  },
-]
+import { useI18n } from '../i18n'
 
 export default function Services() {
+  const { t } = useI18n()
+  const services = t.services.items
+
   return (
     <section className="section" id="servicos">
       <div className="container">
         <header className="section__head">
-          <span className="eyebrow">Serviços</span>
-          <h2>O que eu construo para o seu negócio</h2>
-          <p>
-            Soluções práticas para problemas reais: menos trabalho manual, mais
-            tempo para o que importa.
-          </p>
+          <span className="eyebrow">{t.services.eyebrow}</span>
+          <h2>{t.services.title}</h2>
+          <p>{t.services.intro}</p>
         </header>
 
         <div className="grid grid--3">

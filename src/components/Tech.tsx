@@ -1,32 +1,23 @@
-const stack = [
-  'React',
-  'TypeScript',
-  'Node.js',
-  'Python',
-  'PostgreSQL',
-  'MongoDB',
-  'Docker',
-  'REST APIs',
-  'Scraping',
-  'Automação',
-]
+import { useI18n } from '../i18n'
 
-function Group() {
+function Group({ items }: { items: string[] }) {
   return (
     <div className="tech__group" aria-hidden="true">
-      {stack.map((t) => (
-        <span key={t}>{t}</span>
+      {items.map((item) => (
+        <span key={item}>{item}</span>
       ))}
     </div>
   )
 }
 
 export default function Tech() {
+  const { t } = useI18n()
+
   return (
-    <div className="tech" aria-label="Tecnologias">
+    <div className="tech" aria-label={t.tech.label}>
       <div className="tech__track">
-        <Group />
-        <Group />
+        <Group items={t.tech.stack} />
+        <Group items={t.tech.stack} />
       </div>
     </div>
   )

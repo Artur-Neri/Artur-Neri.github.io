@@ -10,23 +10,23 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import { getProject } from './data/projects'
 import { useHashRoute } from './useHashRoute'
-
-const HOME_TITLE = 'Artur Neri — Web Dev & Automação'
+import { useI18n } from './i18n'
 
 function App() {
   const route = useHashRoute()
+  const { t, lang } = useI18n()
 
   useEffect(() => {
     if (route.name === 'project') {
       const project = getProject(route.slug)
       document.title = project
-        ? `${project.title} · Artur Neri`
-        : 'Projeto não encontrado · Artur Neri'
+        ? `${project.title[lang]} · Artur Neri`
+        : t.projects.docTitle
       window.scrollTo(0, 0)
       return
     }
 
-    document.title = HOME_TITLE
+    document.title = t.meta.title
 
     const id = window.location.hash.replace('#', '')
     if (id && !id.startsWith('/')) {
@@ -34,7 +34,7 @@ function App() {
     } else {
       window.scrollTo(0, 0)
     }
-  }, [route])
+  }, [route, lang, t])
 
   return (
     <>

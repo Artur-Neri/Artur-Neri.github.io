@@ -1,8 +1,10 @@
 import { site } from '../site'
+import { useI18n } from '../i18n'
 
 const year = new Date().getFullYear()
 
 export default function Footer() {
+  const { t } = useI18n()
   return (
     <footer className="footer">
       <div className="container footer__inner">
@@ -20,7 +22,7 @@ export default function Footer() {
               LinkedIn
             </a>
           )}
-          <a href={`mailto:${site.email}`}>E-mail</a>
+          <a href={`mailto:${site.email}`}>{t.footer.email}</a>
         </div>
       </div>
     </footer>

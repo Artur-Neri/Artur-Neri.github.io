@@ -1,46 +1,40 @@
-import { site, whatsappLink } from '../site'
-
-const stats = [
-  { value: '100%', label: 'Projetos sob medida' },
-  { value: '-80%', label: 'Tempo em tarefas manuais' },
-  { value: '24h/dia', label: 'Robôs rodando sozinhos' },
-]
+import { whatsappLink } from '../site'
+import { useI18n } from '../i18n'
 
 export default function Hero() {
+  const { t } = useI18n()
+
   return (
     <section className="hero" id="top">
       <div className="hero__glow" aria-hidden="true" />
       <div className="container hero__inner">
         <span className="pill">
-          <span className="pill__dot" /> Disponível para novos projetos
+          <span className="pill__dot" /> {t.hero.available}
         </span>
 
         <h1>
-          Websites e automações que <em>trabalham por você</em>
+          {t.hero.titleLead}
+          <em>{t.hero.titleAccent}</em>
         </h1>
 
-        <p className="hero__lead">
-          Desenvolvimento web, automação e scraping sob medida. Já transformei
-          um processo de horas montando e-mails de release à mão em um clique —
-          e faço o mesmo com as tarefas repetitivas que consomem o seu dia.
-        </p>
+        <p className="hero__lead">{t.hero.lead}</p>
 
         <div className="hero__actions">
           <a
             className="btn btn--primary btn--lg"
-            href={whatsappLink('Olá, Artur! Quero conversar sobre um projeto.')}
+            href={whatsappLink(t.hero.whatsapp)}
             target="_blank"
             rel="noreferrer"
           >
-            Pedir orçamento no WhatsApp
+            {t.hero.cta}
           </a>
           <a className="btn btn--ghost btn--lg" href="#projetos">
-            Ver projetos
+            {t.hero.secondary}
           </a>
         </div>
 
         <dl className="hero__stats">
-          {stats.map((s) => (
+          {t.hero.stats.map((s) => (
             <div key={s.label}>
               <dt>{s.value}</dt>
               <dd>{s.label}</dd>
@@ -48,7 +42,7 @@ export default function Hero() {
           ))}
         </dl>
 
-        <p className="hero__meta">{site.location}</p>
+        <p className="hero__meta">{t.hero.location}</p>
       </div>
     </section>
   )

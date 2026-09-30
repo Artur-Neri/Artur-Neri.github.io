@@ -1,8 +1,10 @@
 import { projects } from '../data/projects'
 import ProjectCard from './ProjectCard'
 import ProjectCase from './ProjectCase'
+import { useI18n } from '../i18n'
 
 export default function Projects() {
+  const { t } = useI18n()
   const featured = projects.find((project) => project.featured) ?? projects[0]
   const others = projects.filter((project) => project !== featured)
 
@@ -10,9 +12,9 @@ export default function Projects() {
     <section className="section" id="projetos">
       <div className="container">
         <header className="section__head">
-          <span className="eyebrow">Projetos</span>
-          <h2>Casos reais</h2>
-          <p>Nada de mockup: são problemas reais, resolvidos e em uso.</p>
+          <span className="eyebrow">{t.projects.eyebrow}</span>
+          <h2>{t.projects.title}</h2>
+          <p>{t.projects.intro}</p>
         </header>
 
         <ProjectCase project={featured} />
